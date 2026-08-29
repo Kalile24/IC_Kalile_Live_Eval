@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+outputs/*.mp4
+*.aux
+*.toc
+*.out
+*.synctex.gz

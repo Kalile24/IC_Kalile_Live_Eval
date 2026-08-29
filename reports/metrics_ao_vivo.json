@@ -1,0 +1,489 @@
+{
+  "test": {
+    "live_top1": 0.6851211072664359,
+    "teacher_top1": 0.7093425605536332,
+    "live_per_class": {
+      "no_action": 0.613933236574746,
+      "get_connectors": 0.8198198198198198,
+      "get_screws": 0.9240506329113924,
+      "get_wheels": 0.616822429906542
+    },
+    "teacher_per_class": {
+      "no_action": 0.5914368650217707,
+      "get_connectors": 0.9234234234234234,
+      "get_screws": 0.9841772151898734,
+      "get_wheels": 0.9719626168224299
+    },
+    "live_confusion": [
+      [
+        846,
+        307,
+        191,
+        34
+      ],
+      [
+        40,
+        182,
+        0,
+        0
+      ],
+      [
+        12,
+        0,
+        292,
+        12
+      ],
+      [
+        4,
+        0,
+        37,
+        66
+      ]
+    ],
+    "teacher_confusion": [
+      [
+        815,
+        302,
+        201,
+        60
+      ],
+      [
+        17,
+        205,
+        0,
+        0
+      ],
+      [
+        5,
+        0,
+        311,
+        0
+      ],
+      [
+        1,
+        0,
+        2,
+        104
+      ]
+    ],
+    "temporal_thirds_live": [
+      0.7212863705972435,
+      0.7011331444759207,
+      0.6325301204819277
+    ],
+    "context_error_by_dim": [
+      0.30103806228373703,
+      0.060800790904597134,
+      0.0,
+      0.24616905585763718,
+      0.06889520514087988,
+      0.15311418685121106,
+      0.1115916955017301,
+      0.006796836381611468,
+      0.15447355412753336,
+      0.06586752347998023
+    ],
+    "voice_ablation": {
+      "acc_with_voice": 0.6851211072664359,
+      "acc_without_voice": 0.6653484923381117,
+      "tube_dim_err_with": [
+        0.06889520514087988,
+        0.15311418685121106,
+        0.006796836381611468
+      ],
+      "tube_dim_err_without": [
+        0.3023356401384083,
+        0.15311418685121106,
+        0.42424616905585766
+      ],
+      "plan_err_with": 0,
+      "plan_err_without": 0
+    },
+    "plan_error_survey": [],
+    "confirmation_confusion": [
+      [
+        0,
+        11,
+        2,
+        0
+      ],
+      [
+        0,
+        10,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        19,
+        1
+      ],
+      [
+        0,
+        0,
+        3,
+        5
+      ]
+    ]
+  },
+  "train": {
+    "live_top1": 0.7373478539397822,
+    "teacher_top1": 0.769378603459321,
+    "live_per_class": {
+      "no_action": 0.7587648761659698,
+      "get_connectors": 0.6561954624781849,
+      "get_screws": 0.7387606318347509,
+      "get_wheels": 0.6179775280898876
+    },
+    "teacher_per_class": {
+      "no_action": 0.6982952717915728,
+      "get_connectors": 0.8516579406631762,
+      "get_screws": 0.9404617253948967,
+      "get_wheels": 0.9550561797752809
+    },
+    "live_confusion": [
+      [
+        2359,
+        366,
+        241,
+        143
+      ],
+      [
+        193,
+        376,
+        4,
+        0
+      ],
+      [
+        195,
+        0,
+        608,
+        20
+      ],
+      [
+        60,
+        0,
+        8,
+        110
+      ]
+    ],
+    "teacher_confusion": [
+      [
+        2171,
+        504,
+        304,
+        130
+      ],
+      [
+        85,
+        488,
+        0,
+        0
+      ],
+      [
+        44,
+        0,
+        774,
+        5
+      ],
+      [
+        8,
+        0,
+        0,
+        170
+      ]
+    ],
+    "temporal_thirds_live": [
+      0.7518493611297915,
+      0.7403147699757869,
+      0.7202072538860104
+    ],
+    "context_error_by_dim": [
+      0.28187059577194107,
+      0.19410634208840488,
+      0.0,
+      0.14285714285714285,
+      0.12630792227204785,
+      0.17889173606662395,
+      0.23499893230834934,
+      0.10890454836643178,
+      0.08856502242152467,
+      0.03849028400597907
+    ],
+    "voice_ablation": {
+      "acc_with_voice": 0.7373478539397822,
+      "acc_without_voice": 0.7155669442664958,
+      "tube_dim_err_with": [
+        0.12630792227204785,
+        0.17889173606662395,
+        0.10890454836643178
+      ],
+      "tube_dim_err_without": [
+        0.24717061712577407,
+        0.1898355754857997,
+        0.2673499893230835
+      ],
+      "plan_err_with": 1,
+      "plan_err_without": 0
+    },
+    "plan_error_survey": [
+      {
+        "kind": "begin_four_tubes",
+        "true_label_at_frame": "ignore",
+        "count": 1
+      }
+    ],
+    "confirmation_confusion": [
+      [
+        0,
+        14,
+        4,
+        4
+      ],
+      [
+        0,
+        26,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        43,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        6
+      ]
+    ]
+  },
+  "per_session": {
+    "S01_20260712": {
+      "live_top1": 0.6654676258992805,
+      "teacher_top1": 0.7242206235011991,
+      "confirm_model_by_class": {
+        "get_connectors": 8,
+        "get_screws": 12,
+        "get_wheels": 5
+      },
+      "confirm_gt_by_class": {
+        "get_connectors": 9,
+        "get_screws": 12,
+        "get_wheels": 4
+      },
+      "sequence_recovery": 0.96,
+      "num_plan_errors": 0,
+      "final_snapshot_matches_gt": true
+    },
+    "S02_20260712": {
+      "live_top1": 0.5834333733493398,
+      "teacher_top1": 0.7058823529411765,
+      "confirm_model_by_class": {
+        "get_connectors": 8,
+        "get_screws": 14,
+        "get_wheels": 1
+      },
+      "confirm_gt_by_class": {
+        "get_connectors": 8,
+        "get_screws": 12,
+        "get_wheels": 4
+      },
+      "sequence_recovery": 0.8333333333333334,
+      "num_plan_errors": 0,
+      "final_snapshot_matches_gt": false
+    },
+    "S03_20260712": {
+      "live_top1": 0.8009153318077803,
+      "teacher_top1": 0.700228832951945,
+      "confirm_model_by_class": {
+        "get_connectors": 5,
+        "get_screws": 4,
+        "get_wheels": 0
+      },
+      "confirm_gt_by_class": {
+        "get_connectors": 5,
+        "get_screws": 4,
+        "get_wheels": 0
+      },
+      "sequence_recovery": 1.0,
+      "num_plan_errors": 0,
+      "final_snapshot_matches_gt": true
+    },
+    "S04_20260712": {
+      "live_top1": 0.8207547169811321,
+      "teacher_top1": 0.75,
+      "confirm_model_by_class": {
+        "get_connectors": 6,
+        "get_screws": 9,
+        "get_wheels": 0
+      },
+      "confirm_gt_by_class": {
+        "get_connectors": 4,
+        "get_screws": 8,
+        "get_wheels": 0
+      },
+      "sequence_recovery": 1.0,
+      "num_plan_errors": 0,
+      "final_snapshot_matches_gt": false
+    },
+    "S05_20260712": {
+      "live_top1": 0.7563025210084033,
+      "teacher_top1": 0.711764705882353,
+      "confirm_model_by_class": {
+        "get_connectors": 13,
+        "get_screws": 10,
+        "get_wheels": 5
+      },
+      "confirm_gt_by_class": {
+        "get_connectors": 8,
+        "get_screws": 12,
+        "get_wheels": 4
+      },
+      "sequence_recovery": 0.9166666666666666,
+      "num_plan_errors": 0,
+      "final_snapshot_matches_gt": false
+    },
+    "S06_20260712": {
+      "live_top1": 0.735609756097561,
+      "teacher_top1": 0.7239024390243902,
+      "confirm_model_by_class": {
+        "get_connectors": 9,
+        "get_screws": 11,
+        "get_wheels": 6
+      },
+      "confirm_gt_by_class": {
+        "get_connectors": 8,
+        "get_screws": 12,
+        "get_wheels": 4
+      },
+      "sequence_recovery": 0.9583333333333334,
+      "num_plan_errors": 0,
+      "final_snapshot_matches_gt": false
+    },
+    "S07_20260712": {
+      "live_top1": 0.7728260869565218,
+      "teacher_top1": 0.8684782608695653,
+      "confirm_model_by_class": {
+        "get_connectors": 8,
+        "get_screws": 9,
+        "get_wheels": 0
+      },
+      "confirm_gt_by_class": {
+        "get_connectors": 8,
+        "get_screws": 12,
+        "get_wheels": 4
+      },
+      "sequence_recovery": 0.6666666666666666,
+      "num_plan_errors": 1,
+      "final_snapshot_matches_gt": false
+    },
+    "S08_20260712": {
+      "live_top1": 0.6750902527075813,
+      "teacher_top1": 0.8122743682310469,
+      "confirm_model_by_class": {
+        "get_connectors": 4,
+        "get_screws": 2,
+        "get_wheels": 0
+      },
+      "confirm_gt_by_class": {
+        "get_connectors": 8,
+        "get_screws": 13,
+        "get_wheels": 4
+      },
+      "sequence_recovery": 0.24,
+      "num_plan_errors": 0,
+      "final_snapshot_matches_gt": false
+    }
+  },
+  "send_window_used": 8,
+  "sweep_test": [
+    {
+      "send_window": 3,
+      "top1": 0.6391497775580821,
+      "get_connectors": 0.7882882882882883,
+      "get_screws": 0.8860759493670886,
+      "get_wheels": 0.514018691588785,
+      "confirm": 54,
+      "gt": 48,
+      "spurious": 20,
+      "total_conf": 54,
+      "plan_err": 17,
+      "seq_recovery": 0.7916666666666666,
+      "third_end": 0.4894578313253012
+    },
+    {
+      "send_window": 4,
+      "top1": 0.6386554621848739,
+      "get_connectors": 0.7882882882882883,
+      "get_screws": 0.8892405063291139,
+      "get_wheels": 0.514018691588785,
+      "confirm": 53,
+      "gt": 48,
+      "spurious": 17,
+      "total_conf": 53,
+      "plan_err": 17,
+      "seq_recovery": 0.7916666666666666,
+      "third_end": 0.49096385542168675
+    },
+    {
+      "send_window": 5,
+      "top1": 0.6915472071181413,
+      "get_connectors": 0.7882882882882883,
+      "get_screws": 0.9145569620253164,
+      "get_wheels": 0.616822429906542,
+      "confirm": 56,
+      "gt": 48,
+      "spurious": 18,
+      "total_conf": 56,
+      "plan_err": 2,
+      "seq_recovery": 0.875,
+      "third_end": 0.6280120481927711
+    },
+    {
+      "send_window": 6,
+      "top1": 0.6870983687592684,
+      "get_connectors": 0.8108108108108109,
+      "get_screws": 0.9177215189873418,
+      "get_wheels": 0.616822429906542,
+      "confirm": 55,
+      "gt": 48,
+      "spurious": 17,
+      "total_conf": 55,
+      "plan_err": 1,
+      "seq_recovery": 0.875,
+      "third_end": 0.6295180722891566
+    },
+    {
+      "send_window": 8,
+      "top1": 0.6851211072664359,
+      "get_connectors": 0.8198198198198198,
+      "get_screws": 0.9240506329113924,
+      "get_wheels": 0.616822429906542,
+      "confirm": 51,
+      "gt": 48,
+      "spurious": 13,
+      "total_conf": 51,
+      "plan_err": 0,
+      "seq_recovery": 0.875,
+      "third_end": 0.6325301204819277
+    },
+    {
+      "send_window": 10,
+      "top1": 0.7162629757785467,
+      "get_connectors": 0.7162162162162162,
+      "get_screws": 0.7784810126582279,
+      "get_wheels": 0.6074766355140186,
+      "confirm": 40,
+      "gt": 48,
+      "spurious": 9,
+      "total_conf": 40,
+      "plan_err": 0,
+      "seq_recovery": 0.7291666666666666,
+      "third_end": 0.677710843373494
+    }
+  ]
+}
