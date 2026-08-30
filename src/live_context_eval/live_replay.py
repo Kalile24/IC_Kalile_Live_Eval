@@ -42,6 +42,8 @@ from typing import Any, Dict, List, Optional
 
 import numpy as np
 import torch
+from torch.distributions import Categorical
+from torch.nn.functional import softmax
 
 from . import repos  # registra sys.path
 from plan_sim import PlanGraph  # type: ignore  # mesma copia do run ao vivo
@@ -63,6 +65,7 @@ def run_live_context(
     variant: str,
     *,
     restrict: str = "no",
+    thresholds: Optional[Dict[int, float]] = None,
     send_window: int = 3,
     seed: int = 0,
     teacher_forced: bool = False,
@@ -73,10 +76,19 @@ def run_live_context(
 
     Args:
         restrict: modo do preditor (``no`` = argmax com contexto; ``ood`` = com
-            corte por entropia). Faithful ao ``run_webcam_context`` (que usa
-            ``ood``), mas o padrao aqui e ``no`` porque o corte por entropia
-            (calibrado no dataset do artigo) suprime justamente as predicoes de
-            acao que queremos observar (ver relatorio).
+            corte por entropia, limiares fixos 0,4/0,5 do artigo). Faithful ao
+            ``run_webcam_context`` (que usa ``ood``), mas o padrao aqui e ``no``
+            porque o corte por entropia (calibrado no dataset do artigo)
+            suprime justamente as predicoes de acao que queremos observar (ver
+            relatorio). Ignorado quando ``thresholds`` e passado.
+        thresholds: limiar de entropia por classe prevista (``{indice_classe:
+            limiar}``, ver ``calibrate_entropy_threshold.py`` em hrc-finetune),
+            para testar ao vivo um limiar calibrado em vez dos fixos 0,4/0,5 de
+            ``predict.py``. Quando definido, reimplementa a mesma regra de
+            corte (``entropia > limiar`` -> ``no_action``) direto sobre os
+            logits do modelo, sem passar por ``IntentionPredictor.predict``
+            (que so aceita 0,4/0,5). ``None`` (padrao) usa ``restrict`` como
+            antes.
         teacher_forced: se True, o contexto de cada frame e imposto do ground
             truth (baseline A/B, no MESMO pipeline streaming), para medir quanto
             da variacao vem da construcao ao vivo vs. do proprio streaming.
@@ -166,8 +178,26 @@ def run_live_context(
                 None if context_dim == 0
                 else torch.tensor(cached_context, dtype=torch.float32).unsqueeze(0)
             )
-            _, pred = predictor.predict(inputs, restrict=restrict, context=ctx_tensor)
-            predicted = NAME_BY_IDX[int(pred[0].item())]
+            if thresholds is not None:
+                # Mesma formula de predict.py:142-147 (entropia da softmax,
+                # entropia > limiar -> no_action), mas com um limiar por
+                # classe prevista em vez dos dois grupos fixos 0,4/0,5.
+                if context_dim > 0:
+                    _, pred_intention = predictor.model(inputs, ctx_tensor)
+                else:
+                    _, pred_intention = predictor.model(inputs)
+                probs = softmax(pred_intention, dim=1)
+                argmax_idx = int(torch.argmax(pred_intention, dim=1).item())
+                pred_idx = argmax_idx
+                thr = thresholds.get(argmax_idx)
+                if thr is not None:
+                    entropy = Categorical(probs=probs[0].detach()).entropy()
+                    if entropy.item() > thr:
+                        pred_idx = INTENTION_LIST["no_action"]
+                predicted = NAME_BY_IDX[pred_idx]
+            else:
+                _, pred = predictor.predict(inputs, restrict=restrict, context=ctx_tensor)
+                predicted = NAME_BY_IDX[int(pred[0].item())]
 
             true = labels[frame_idx]
             if true in INTENTION_LIST:
@@ -237,7 +267,7 @@ def run_live_context(
     return {
         "session_id": Path(session_dir).name,
         "variant": variant,
-        "restrict": restrict,
+        "restrict": "thresholds" if thresholds is not None else restrict,
         "teacher_forced": teacher_forced,
         "num_frames": len(skeleton),
         "streaming_num_samples": total,

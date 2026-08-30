@@ -34,11 +34,16 @@ import sys
 from pathlib import Path
 from typing import Dict, List
 
-HOME = Path.home()
+# Os 3 repositorios originais foram reorganizados para dentro de
+# ~/repos-ic/ depois que este repositorio foi criado (que assumia
+# ~/hrc-finetune etc. direto sob HOME). Deriva a raiz relativa a este
+# arquivo (repos.py esta em <repos-ic>/hrc-live-context-eval/src/live_context_eval/)
+# em vez de reassumir HOME, pra nao quebrar de novo numa proxima reorganizacao.
+REPOS_ROOT = Path(__file__).resolve().parents[3]
 
-IC_REPO = HOME / "IC_Kalile_Intention_Prediction_HRC"
-DATACOL_REPO = HOME / "hrc-data-collection"
-FINETUNE_REPO = HOME / "hrc-finetune"
+IC_REPO = REPOS_ROOT / "IC_Kalile_Intention_Prediction_HRC"
+DATACOL_REPO = REPOS_ROOT / "hrc-data-collection"
+FINETUNE_REPO = REPOS_ROOT / "hrc-finetune"
 
 # ``datacol`` e um pacote sob src/; ``predict``/``DLinear``/``plan_sim`` sao
 # modulos de topo em hrc-finetune/.

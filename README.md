@@ -54,6 +54,19 @@ reports/
 outputs/               8 MP4s (contexto construído ao vivo)
 ```
 
+## Instalação
+
+Este repositório precisa de `hrc-data-collection` e `hrc-finetune` clonados
+como diretórios **irmãos** (mesmo diretório pai) — `repos.py` monta o
+`sys.path` a partir da posição relativa dos três. Cada um tem seu próprio
+`requirements.txt`; instale os três antes de rodar qualquer script daqui:
+
+```bash
+pip install -r requirements.txt
+pip install -r ../hrc-data-collection/requirements.txt
+pip install -r ../hrc-finetune/requirements.txt
+```
+
 ## Ambiente
 
 Conda `hrc` (torch 2.8 / numpy 1.26 / cv2 4.13 — o mesmo do treino):

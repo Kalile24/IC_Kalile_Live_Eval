@@ -1,0 +1,10 @@
+torch
+numpy
+opencv-python
+pytest
+
+# datacol, DLinear, plan_sim e predict nao vem daqui -- sao importados dos
+# repos irmaos (hrc-data-collection e hrc-finetune) via sys.path, montado
+# por src/live_context_eval/repos.py. Os dois precisam estar clonados como
+# repos irmaos deste (../hrc-data-collection, ../hrc-finetune) com suas
+# proprias dependencias instaladas (ver requirements.txt de cada um).
